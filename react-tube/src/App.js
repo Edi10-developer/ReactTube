@@ -4,15 +4,14 @@ import { SearchBar, VideoDetails, VideoList } from './components/index';
 import axios from 'axios';
 
 function App() {
-  const [snippet1, setSnippet1] = useState({ videos: [], selectedVideo: null })
+  //const [snippet1, setSnippet1] = useState({ videos: [], selectedVideo: null })
+  const [termsOfSearch, setTermsOfSearch] = useState('');
   const [url, setUrl] = useState({ url: '', title: '', description: '' })
-  const [value, setValue] = useState('');
 
   const handleSubmit = async () => {
     const api_key = 'AIzaSyAiP87H9sTZb_TvwCVRReZ0geYKCx_Zk9U';
-    const snippet_q = value;
-    
-    await axios(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${value}&key=${api_key}`)
+
+    await axios(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${termsOfSearch}&key=${api_key}`)
       .then(datas => {
         setUrl({
           url: `https://www.youtube.com/embed/${datas.data.items[0].id.videoId}`,
@@ -23,15 +22,19 @@ function App() {
   }
 
   const handleVideoSelect = () => {
-   setValue(value)
-   handleSubmit();
+    //setValue(value)
+    //handleSubmit();
   }
+
+  const handleChange = event => {
+    setTermsOfSearch(event.target.value);
+  };
 
   return (
     <div className="App">
       <SearchBar
-        value={value}
-        onClick={handleVideoSelect}
+        value={termsOfSearch}
+        onChange={handleChange}
       />
 
       <VideoDetails
@@ -40,8 +43,9 @@ function App() {
         description={url.description}
       />
 
-      <VideoList />
-      <button onClick={handleVideoSelect}>Video Call</button>
+      <VideoList onClick={handleVideoSelect} />
+
+      <button onClick={handleSubmit}>Video Call</button>
     </div>
   );
 }

@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 const VideoDiv = styled.div`
-        width: 60%;
-        height: 55vh;
+        padding: 1rem;
+        width: 57%;
+        height: 40em;;
 
         iframe{
             width: 100%;
-            height: 100%;
+            height: 34em;
         }
 `;
 

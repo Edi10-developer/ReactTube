@@ -1,7 +1,7 @@
 const Iframe = props => {
     return (
         <div className="iframe" >
-            <iframe src={props.src} title={props.title} allowFullScreen />
+            <iframe src={props.src} title={props.title} allowFullScreen onClick={props.Onclick} />
             <div>
                 <h3>Title {props.title}</h3>
                 <p>Descriprion Descriprion Descriprion Descriprion {props.description}</p>

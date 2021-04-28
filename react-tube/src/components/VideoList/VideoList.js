@@ -1,13 +1,13 @@
 import { VideoListDiv } from './styles';
 import { Iframe } from '../index'; 
 
-const VideoList = () => {
+const VideoList = props => {
     return (
         <VideoListDiv>
-            <Iframe />
-            <Iframe />
-            <Iframe />
-            <Iframe />
+            <Iframe src={props.src} title={props.title} description={props.description} onClcik={props.onClcik} />
+            <Iframe src={props.src} title={props.title} description={props.description} onClcik={props.onClcik} />
+            <Iframe src={props.src} title={props.title} description={props.description} onClcik={props.onClcik} />
+            <Iframe src={props.src} title={props.title} description={props.description} onClcik={props.onClcik} />
         </VideoListDiv>
     )
 }

@@ -4,7 +4,7 @@ const VideoListDiv = styled.div`
       float: right;
       width: calc(40% - 4px);
       height: 90vh;
-      margin-top: -27.6rem;
+      margin-top: -42.2rem;
      
       .iframe{
             display: flex;

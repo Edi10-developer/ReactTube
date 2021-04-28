@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SearchDiv } from './styles';
 
 const SearchBar = props => {
-    return(
-    <SearchDiv>
-        <h3>Video search</h3>
-        <input type="text" placeholder="Search" className="input-field" onChange={props.onChane} value={props.value} />
-        <button onClick={props.onClick} placeholder="Search" />
-    </SearchDiv>
+    const [termsOfSearch, setTermsOfSearch] = useState('');
+    return (
+        <SearchDiv>
+            <h3>Video search</h3>
+            <input
+                value={termsOfSearch}
+                type="text"
+                placeholder="Search"
+                className="input-field"
+                onInput={e => setTermsOfSearch(e.target.value)}
+                onChange={props.onChange}
+            />
+        </SearchDiv>
     )
 }
 export default SearchBar;

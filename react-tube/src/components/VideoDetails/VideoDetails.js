@@ -5,7 +5,7 @@ import { Iframe } from '../index';
 const VideoDetails = (props) => {
   return (
     <VideoDiv> 
-        <Iframe />
+        <Iframe src={props.src} title={props.title} description={props.description}/>
     </VideoDiv>
   );
 };
