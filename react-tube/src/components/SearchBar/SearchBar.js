@@ -9,11 +9,12 @@ const SearchBar = props => {
             <input
                 value={termsOfSearch}
                 type="text"
-                placeholder="Search"
+                placeholder="Write something..."
                 className="input-field"
                 onInput={e => setTermsOfSearch(e.target.value)}
                 onChange={props.onChange}
             />
+            <button onClick={props.onClick}>Search</button>
         </SearchDiv>
     )
 }

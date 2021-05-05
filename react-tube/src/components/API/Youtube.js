@@ -1,17 +1,14 @@
 import axios from 'axios';
+const api_key = 'AIzaSyAiP87H9sTZb_TvwCVRReZ0geYKCx_Zk9U';
 
-const Youtube = props => {
-    axios.create({
 
-        baseURL: 'https://www.youtube.com/',
+export default axios.create({
+    //baseURL: 'https://www.youtube.com/',
+    baseURL: 'https://googleapis.com/youtube/v3/',
+    params: {
+        part: 'snippet',
+        maxResults: 4,
+        key: api_key
+    }
 
-        params: {
-            parte: props.parte,
-            maxResults: props.maxResults,
-            key: props.key
-        }
-
-    })
-}
-
-export default Youtube;
+})

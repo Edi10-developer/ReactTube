@@ -15,13 +15,18 @@ const VideoListDiv = styled.div`
             padding: .7rem;
       }
       .iframe iframe{
-            width: 16rem;
+            width: 17rem;
             background-color: grey;
       }
-      .iframe div{
+      .side-content{
             margin-left: 2rem;
             border: none;
+            padding: .4rem;
       }
+      .side-content h3{
+            font-size: 16px;
+      }
+      
 `;
 
 export { VideoListDiv };

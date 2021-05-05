@@ -2,50 +2,54 @@ import React, { useState } from 'react';
 import './App.css';
 import { SearchBar, VideoDetails, VideoList } from './components/index';
 import axios from 'axios';
+//import youtube from './components/API/youtube';
 
 function App() {
-  //const [snippet1, setSnippet1] = useState({ videos: [], selectedVideo: null })
+  const [snippet, setSnippet] = useState({ videos: [], selectedVideo: null })
   const [termsOfSearch, setTermsOfSearch] = useState('');
-  const [url, setUrl] = useState({ url: '', title: '', description: '' })
+  const [data, setData] = useState({ url: '', title: '', description: '' })
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (termsOfSearch) => {
     const api_key = 'AIzaSyAiP87H9sTZb_TvwCVRReZ0geYKCx_Zk9U';
+    console.log(termsOfSearch)
 
     await axios(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${termsOfSearch}&key=${api_key}`)
-      .then(datas => {
-        setUrl({
-          url: `https://www.youtube.com/embed/${datas.data.items[0].id.videoId}`,
-          title: datas.data.items[0].snippet.title,
-          description: datas.data.items[0].snippet.description
+      .then(response => {
+        console.log(response.data)
+        setSnippet({ videos: response.data.items, selectedVideo: response.data.items[0] })
+        setData({
+          url: `https://www.youtube.com/embed/${response.data.items[0].id.videoId}`,
+          title: response.data.items[0].snippet.title,
+          description: response.data.items[0].snippet.description
         })
-      })
-  }
-
-  const handleVideoSelect = () => {
-    //setValue(value)
-    //handleSubmit();
+        //setSnippet({ selectedVideo: response.data.items[0] })
+      })  
   }
 
   const handleChange = event => {
     setTermsOfSearch(event.target.value);
   };
 
+  
   return (
     <div className="App">
+
       <SearchBar
         value={termsOfSearch}
         onChange={handleChange}
+        onClick={handleSubmit}
       />
 
       <VideoDetails
-        src={url.url}
-        title={url.title}
-        description={url.description}
+       src={data.url}
+       title={data.title}
       />
 
-      <VideoList onClick={handleVideoSelect} />
+      <VideoList
+        handleVideoSelect={selectedVideo => setSnippet({ selectedVideo: selectedVideo })}
+        videos={snippet.videos}
+      />
 
-      <button onClick={handleSubmit}>Video Call</button>
     </div>
   );
 }

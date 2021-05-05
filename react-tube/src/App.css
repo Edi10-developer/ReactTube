@@ -3,6 +3,7 @@ div{
 }
 .App {
   width: 90%;
+  height: 100vh;
   margin: 0 auto;
   border: 1px solid red;
   overflow: hidden;
