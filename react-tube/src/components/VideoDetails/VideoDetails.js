@@ -9,8 +9,8 @@ const VideoDetails = props => {
   return (
     <VideoDiv> 
         <iframe src={props.src} />
-        <div>{props.title}</div>
-        <div>{props.description}</div>
+        <div><h3>{props.title}</h3></div>
+        <div><h5>{props.description}</h5></div>
     </VideoDiv>
   );
 };

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const VideoDiv = styled.div`
         padding: 1rem;
         width: 57%;
-        height: 40em;;
+        min-height: 40rem;
 
         iframe{
             width: 100%;

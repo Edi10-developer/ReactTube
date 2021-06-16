@@ -1,17 +1,18 @@
 import React from 'react';
 
-const VideoItem = props => {
+const VideoItem = ({ video, handleVideoSelect }) => {
+    const url = `https://www.youtube.com/embed/${video.id.videoId}`;
     return (
-        <div
-            onClick={props.onClick}
-            className="iframe"
-            key={props.key}
-        >
-            <iframe src={props.src} allowFullScreen />
-            <div className="side-content">
-                <h3>{props.title}</h3>
+        <li key={video.etag}>
+            <div handleVideoSelect={handleVideoSelect}
+                className="iframe"
+                >
+                <iframe src={url} allowFullScreen />
+                <div className="side-content">
+                    <h3>{video.snippet.title}</h3>
+                </div>
             </div>
-        </div>
+        </li>
     )
 }
 export default VideoItem;

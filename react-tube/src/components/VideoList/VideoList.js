@@ -1,22 +1,23 @@
 import { VideoListDiv } from './styles';
 import { VideoItem } from '../index';
 
-const VideoList = props => {
+const VideoList = ({ videos, handleVideoSelect }) => {
     return (
         <VideoListDiv>
+            <ul>
             {
-                props.videos.map((video, key) => {
+                videos.map((video) => {
                     return (
                         <VideoItem
                             video={video}
-                            handleVideoSelect={props.handleVideoSelect}  
+                            handleVideoSelect={handleVideoSelect}  
                             title={video.title}
-                            src={props.src}
-                            key={key}
+                            key={video.etag}
                         />
                     )
                 })
             }
+            </ul>
 
 
         </VideoListDiv>
